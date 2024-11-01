@@ -1,0 +1,1729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="FullAssemFIN_URDF">
+  <link
+    name="back">
+    <inertial>
+      <origin
+        xyz="-0.0169516417026727 -0.0110456606317807 0.169546183895253"
+        rpy="0 0 0" />
+      <mass
+        value="0.0204880063153911" />
+      <inertia
+        ixx="1.35923483280317E-05"
+        ixy="-2.43093215812872E-08"
+        ixz="2.27886204971984E-08"
+        iyy="1.69449181621983E-05"
+        iyz="1.36820834076757E-06"
+        izz="1.11554473135635E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/back.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="waist_turn">
+    <inertial>
+      <origin
+        xyz="3.2506302770699E-07 0.0444144113790805 -0.0253684671922433"
+        rpy="0 0 0" />
+      <mass
+        value="0.0479224051158359" />
+      <inertia
+        ixx="8.21085122639654E-05"
+        ixy="-4.52237792157965E-11"
+        ixz="-3.206121764189E-10"
+        iyy="8.22753218168003E-05"
+        iyz="-7.62764284515215E-07"
+        izz="2.98151259448989E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/waist_turn.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/waist_turn.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="waist_turn"
+    type="revolute">
+    <origin
+      xyz="-0.015896 -0.015733 0.074799"
+      rpy="1.6001 -0.010916 -0.00031946" />
+    <parent
+      link="back" />
+    <child
+      link="waist_turn" />
+    <axis
+      xyz="0.010916 0.99951 -0.029251" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="waist_tilt">
+    <inertial>
+      <origin
+        xyz="0.0155992061443956 -0.0137656370992538 -1.09621838689788E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.123383162774701" />
+      <inertia
+        ixx="3.15626294579424E-05"
+        ixy="-1.08491338636E-06"
+        ixz="3.27805153481347E-12"
+        iyy="4.19460401690378E-05"
+        iyz="-6.37525387718304E-11"
+        izz="5.17253027339537E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/waist_tilt.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.149019607843137 0.149019607843137 0.149019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/waist_tilt.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="waist_tilt"
+    type="revolute">
+    <origin
+      xyz="0.00033176 0.030377 -0.0613"
+      rpy="-1.5708 0 -1.5817" />
+    <parent
+      link="waist_turn" />
+    <child
+      link="waist_tilt" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="waist_bend">
+    <inertial>
+      <origin
+        xyz="-1.45577067430652E-06 -0.00598452228678654 0.000885914908506412"
+        rpy="0 0 0" />
+      <mass
+        value="0.0245004938286871" />
+      <inertia
+        ixx="8.58703935470211E-06"
+        ixy="-3.82819745654713E-10"
+        ixz="-5.64672467420424E-10"
+        iyy="1.46397990771802E-05"
+        iyz="-1.41120275924712E-06"
+        izz="1.66978259706002E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/waist_bend.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/waist_bend.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="waist_bend"
+    type="revolute">
+    <origin
+      xyz="0.050018 -0.041067 -0.0009"
+      rpy="1.6001 -1.5708 0" />
+    <parent
+      link="waist_tilt" />
+    <child
+      link="waist_bend" />
+    <axis
+      xyz="-0.99994 -0.010916 -0.00031944" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_pelvis">
+    <inertial>
+      <origin
+        xyz="-0.0217037200510519 0.0152545079694367 -0.00161010795460055"
+        rpy="0 0 0" />
+      <mass
+        value="0.0111141707145071" />
+      <inertia
+        ixx="6.4600143783125E-06"
+        ixy="1.07272476709302E-06"
+        ixz="-2.35131546480599E-08"
+        iyy="6.45247351249234E-06"
+        iyz="-2.927091213776E-08"
+        izz="4.01361894450736E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_pelvis.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_pelvis.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_pelvis"
+    type="revolute">
+    <origin
+      xyz="-0.018 -0.04235 0"
+      rpy="0 0 -0.0076536" />
+    <parent
+      link="waist_bend" />
+    <child
+      link="right_pelvis" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_hip_turn">
+    <inertial>
+      <origin
+        xyz="-0.00806589976316084 -9.30794860187767E-07 -0.000353566502064473"
+        rpy="0 0 0" />
+      <mass
+        value="0.0063874254777914" />
+      <inertia
+        ixx="1.23497680142221E-06"
+        ixy="-1.63774216767872E-10"
+        ixz="1.03392152371083E-08"
+        iyy="7.75330460326702E-07"
+        iyz="4.04531871535636E-11"
+        izz="1.96771610038831E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_hip_turn.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_hip_turn.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_hip_turn"
+    type="revolute">
+    <origin
+      xyz="-0.048999 0 0.0067"
+      rpy="1.5708 -1.5617 0" />
+    <parent
+      link="right_pelvis" />
+    <child
+      link="right_hip_turn" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_thigh_hip">
+    <inertial>
+      <origin
+        xyz="-0.00285434296458119 -0.081898464608763 0.0118149899694836"
+        rpy="0 0 0" />
+      <mass
+        value="0.044347000666283" />
+      <inertia
+        ixx="0.000156043764114402"
+        ixy="-8.27714904281507E-06"
+        ixz="1.12153966140991E-06"
+        iyy="4.20219791660472E-05"
+        iyz="2.17742246720519E-05"
+        izz="0.000148842697591768" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_thigh_hip.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_thigh_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_thigh_hip"
+    type="revolute">
+    <origin
+      xyz="-0.0035 0 0.0183"
+      rpy="-1.5708 -0.065065 3.1416" />
+    <parent
+      link="right_hip_turn" />
+    <child
+      link="right_thigh_hip" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_knee">
+    <inertial>
+      <origin
+        xyz="-0.00583953993539 -0.110414749197933 0.0262204335052208"
+        rpy="0 0 0" />
+      <mass
+        value="0.069821347410624" />
+      <inertia
+        ixx="0.000397129096850638"
+        ixy="2.62539865286711E-05"
+        ixz="-5.48660811214264E-08"
+        iyy="5.33341368243987E-05"
+        iyz="1.70735838347766E-07"
+        izz="0.000409985862727986" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_knee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_knee"
+    type="revolute">
+    <origin
+      xyz="0 -0.1839 0"
+      rpy="0 0 0.080623" />
+    <parent
+      link="right_thigh_hip" />
+    <child
+      link="right_knee" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_foot">
+    <inertial>
+      <origin
+        xyz="0.0230398103837703 -0.0243860632108613 0.0196362283260012"
+        rpy="0 0 0" />
+      <mass
+        value="0.0496703811447069" />
+      <inertia
+        ixx="8.22904002511698E-05"
+        ixy="-1.62454157864726E-07"
+        ixz="2.41854540067957E-06"
+        iyy="9.14785184625338E-05"
+        iyz="6.6130902529267E-06"
+        izz="2.19219336935947E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_foot.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_foot.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_foot"
+    type="revolute">
+    <origin
+      xyz="0 -0.23155 0"
+      rpy="2.0854 -1.5708 -2.0997" />
+    <parent
+      link="right_knee" />
+    <child
+      link="right_foot" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_pelvis">
+    <inertial>
+      <origin
+        xyz="0.0217037292468341 0.0152545172662447 -0.00161017683992408"
+        rpy="0 0 0" />
+      <mass
+        value="0.0111141692583885" />
+      <inertia
+        ixx="6.46001605371021E-06"
+        ixy="-1.07272399524582E-06"
+        ixz="2.35172681303543E-08"
+        iyy="6.45247461242887E-06"
+        iyz="-2.92626653586326E-08"
+        izz="4.0136219772048E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_pelvis.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_pelvis.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_pelvis"
+    type="revolute">
+    <origin
+      xyz="0.018 -0.04235 0"
+      rpy="0 0 0.0061002" />
+    <parent
+      link="waist_bend" />
+    <child
+      link="left_pelvis" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_hip_turn">
+    <inertial>
+      <origin
+        xyz="-0.00806590118614818 -9.19306712109103E-07 -0.000353563254789952"
+        rpy="0 0 0" />
+      <mass
+        value="0.00638742082980048" />
+      <inertia
+        ixx="1.23497600695676E-06"
+        ixy="-1.64051402238197E-10"
+        ixz="1.03393287822582E-08"
+        iyy="7.75330358942507E-07"
+        iyz="4.08151922854473E-11"
+        izz="1.96771508210499E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_hip_turn.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_hip_turn.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_hip_turn"
+    type="revolute">
+    <origin
+      xyz="0.048999 0 0.0067"
+      rpy="-1.5708 -1.569 3.1416" />
+    <parent
+      link="left_pelvis" />
+    <child
+      link="left_hip_turn" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_thigh_hip">
+    <inertial>
+      <origin
+        xyz="-0.00154549026484292 -0.0793103578721408 -0.011729069980227"
+        rpy="0 0 0" />
+      <mass
+        value="0.0387056568683493" />
+      <inertia
+        ixx="0.000140677906743445"
+        ixy="-2.670680627324E-06"
+        ixz="9.6392183604703E-07"
+        iyy="3.65385749209973E-05"
+        iyz="-1.69600497323401E-05"
+        izz="0.000132890503723045" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_thigh_hip.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_thigh_hip.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_thigh_hip"
+    type="revolute">
+    <origin
+      xyz="-0.0035 0 0.0183"
+      rpy="-1.5708 0.0086726 3.1416" />
+    <parent
+      link="left_hip_turn" />
+    <child
+      link="left_thigh_hip" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_knee">
+    <inertial>
+      <origin
+        xyz="-0.00583963214213274 -0.110413435338786 -0.0261234556697349"
+        rpy="0 0 0" />
+      <mass
+        value="0.0698212151012701" />
+      <inertia
+        ixx="0.000397139583841209"
+        ixy="2.62558492153066E-05"
+        ixz="-5.53060669829624E-08"
+        iyy="5.33345875341008E-05"
+        iyz="1.72204585802118E-07"
+        izz="0.000409996185228935" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_knee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_knee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_knee"
+    type="revolute">
+    <origin
+      xyz="0 -0.1839 0"
+      rpy="0 0 0.028785" />
+    <parent
+      link="left_thigh_hip" />
+    <child
+      link="left_knee" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_foot">
+    <inertial>
+      <origin
+        xyz="-0.0229175539125251 -0.0243878316427248 0.0196603234393092"
+        rpy="0 0 0" />
+      <mass
+        value="0.0496970881068357" />
+      <inertia
+        ixx="8.22698563876275E-05"
+        ixy="1.61017303479307E-07"
+        ixz="-2.42042384973512E-06"
+        iyy="9.14636365034769E-05"
+        iyz="6.61342029141958E-06"
+        izz="2.1920306059074E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_foot.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_foot.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_foot"
+    type="revolute">
+    <origin
+      xyz="0 -0.23155 0"
+      rpy="-0.97329 -1.5708 0.94462" />
+    <parent
+      link="left_knee" />
+    <child
+      link="left_foot" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="chest_bend">
+    <inertial>
+      <origin
+        xyz="-1.5495416844525E-06 0.0161148917207616 0.0128419915572965"
+        rpy="0 0 0" />
+      <mass
+        value="0.0601134490131418" />
+      <inertia
+        ixx="1.42260370807741E-05"
+        ixy="1.32388509921009E-09"
+        ixz="-1.7652901813982E-10"
+        iyy="1.22317140984879E-05"
+        iyz="2.16336597514212E-07"
+        izz="7.31878044194166E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/chest_bend.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.309803921568627 0.309803921568627 0.309803921568627 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/chest_bend.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="chest_bend"
+    type="revolute">
+    <origin
+      xyz="-0.003915 -0.0205 0.20494"
+      rpy="-0.011013 -0.032654 1.5739" />
+    <parent
+      link="back" />
+    <child
+      link="chest_bend" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="chest_tilt">
+    <inertial>
+      <origin
+        xyz="2.97192506736044E-06 0.0645921585405988 -0.00850787321511152"
+        rpy="0 0 0" />
+      <mass
+        value="0.271456924386371" />
+      <inertia
+        ixx="0.000425842315802216"
+        ixy="-1.32478608668541E-08"
+        ixz="3.78261745890929E-08"
+        iyy="0.000836928949270496"
+        iyz="-2.56542510859702E-05"
+        izz="0.000727318588520767" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/chest_tilt.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/chest_tilt.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="chest_tilt"
+    type="revolute">
+    <origin
+      xyz="0 0.014499 0"
+      rpy="1.5708 0.011634 -1.5708" />
+    <parent
+      link="chest_bend" />
+    <child
+      link="chest_tilt" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="neck_turn">
+    <inertial>
+      <origin
+        xyz="-0.00133568814662726 0.0106320978542148 1.64798730217797E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.00649329301930085" />
+      <inertia
+        ixx="8.11045126393523E-07"
+        ixy="8.80185496766059E-08"
+        ixz="-4.28065966996192E-23"
+        iyy="2.02635190148404E-06"
+        iyz="-1.19114008207636E-22"
+        izz="2.2963278148473E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/neck_turn.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/neck_turn.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="neck_turn"
+    type="revolute">
+    <origin
+      xyz="0 0.12332 -0.00273"
+      rpy="0 0.0028421 0" />
+    <parent
+      link="chest_tilt" />
+    <child
+      link="neck_turn" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="head">
+    <inertial>
+      <origin
+        xyz="-0.00107998504456047 0.024664472364361 0.0012467801454307"
+        rpy="0 0 0" />
+      <mass
+        value="0.18475204304489" />
+      <inertia
+        ixx="0.000580491039987683"
+        ixy="1.36212851270959E-05"
+        ixz="3.15749553874195E-07"
+        iyy="0.00114448272695182"
+        iyz="-1.2681367450856E-07"
+        izz="0.000819661766770525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/head.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/head.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="head"
+    type="revolute">
+    <origin
+      xyz="0 0.020781 0"
+      rpy="-1.5708 -1.5546 1.5708" />
+    <parent
+      link="neck_turn" />
+    <child
+      link="head" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_shoulder_twist">
+    <inertial>
+      <origin
+        xyz="-0.0111706563393739 -2.27595720048157E-15 -0.0114631689738395"
+        rpy="0 0 0" />
+      <mass
+        value="0.0104989821167456" />
+      <inertia
+        ixx="6.19340879843903E-06"
+        ixy="1.25338542317098E-21"
+        ixz="-1.06020563594101E-07"
+        iyy="6.88183260609743E-06"
+        iyz="-1.98523347012727E-21"
+        izz="2.10368331977383E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_shoulder_twist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_shoulder_twist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_shoulder_twist"
+    type="revolute">
+    <origin
+      xyz="-0.092106 0.073 0.01547"
+      rpy="-0.093092 0 0" />
+    <parent
+      link="chest_tilt" />
+    <child
+      link="right_shoulder_twist" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_shoulder_raise">
+    <inertial>
+      <origin
+        xyz="-0.0147796005235268 -0.00996563877549585 -7.86090456617039E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.123383166361986" />
+      <inertia
+        ixx="3.15626278747694E-05"
+        ixy="-1.08491454090419E-06"
+        ixz="2.6199202662076E-12"
+        iyy="4.19460448196557E-05"
+        iyz="-6.36838030907388E-11"
+        izz="5.1725309421701E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_shoulder_raise.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.149019607843137 0.149019607843137 0.149019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_shoulder_raise.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_shoulder_raise"
+    type="revolute">
+    <origin
+      xyz="-0.024994 0 0"
+      rpy="1.5708 0 1.384" />
+    <parent
+      link="right_shoulder_twist" />
+    <child
+      link="right_shoulder_raise" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_arm_twist">
+    <inertial>
+      <origin
+        xyz="-5.30736233572693E-07 -0.0507416262598128 0.0170919676950748"
+        rpy="0 0 0" />
+      <mass
+        value="0.0220003163934658" />
+      <inertia
+        ixx="2.82728189332014E-05"
+        ixy="-1.1892771673636E-12"
+        ixz="3.00832219755998E-10"
+        iyy="1.44383231426037E-05"
+        iyz="1.51396717466325E-06"
+        izz="2.88040960355722E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_arm_twist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_arm_twist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_arm_twist"
+    type="revolute">
+    <origin
+      xyz="-0.03841 -0.0106 0"
+      rpy="3.1416 1.4354 1.5708" />
+    <parent
+      link="right_shoulder_raise" />
+    <child
+      link="right_arm_twist" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_elbow">
+    <inertial>
+      <origin
+        xyz="5.52149134500357E-05 -0.0559382900278434 -0.000500195798576374"
+        rpy="0 0 0" />
+      <mass
+        value="0.0216224376843263" />
+      <inertia
+        ixx="2.33411216979762E-05"
+        ixy="-1.97042938219721E-08"
+        ixz="-3.67048874307788E-08"
+        iyy="1.01808891081469E-05"
+        iyz="2.46959034632157E-08"
+        izz="2.52459840805635E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_elbow.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_elbow.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_elbow"
+    type="revolute">
+    <origin
+      xyz="0 -0.11836 0.012929"
+      rpy="3.0916 0 3.1416" />
+    <parent
+      link="right_arm_twist" />
+    <child
+      link="right_elbow" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_wrist">
+    <inertial>
+      <origin
+        xyz="3.46349069611229E-05 0.0114396494885339 -0.00107215704668882"
+        rpy="0 0 0" />
+      <mass
+        value="0.0114216789330626" />
+      <inertia
+        ixx="1.6278081092826E-06"
+        ixy="-2.75501909929917E-09"
+        ixz="-6.47315326201578E-09"
+        iyy="2.37673080642508E-06"
+        iyz="4.99234978271678E-08"
+        izz="1.91292440492814E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_wrist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wrist"
+    type="revolute">
+    <origin
+      xyz="-0.0004 -0.1306 0.0148"
+      rpy="0 -0.0042122 -3.1416" />
+    <parent
+      link="right_elbow" />
+    <child
+      link="right_wrist" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_hand">
+    <inertial>
+      <origin
+        xyz="0.0265633808404609 -0.0123999975593761 -0.00429163160394488"
+        rpy="0 0 0" />
+      <mass
+        value="0.00899816187190146" />
+      <inertia
+        ixx="4.31888418170756E-06"
+        ixy="-1.5189587881458E-13"
+        ixz="3.62082256398597E-07"
+        iyy="3.29146624894129E-06"
+        iyz="-7.24816608879545E-14"
+        izz="5.40454123377762E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_hand.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/right_hand.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_hand"
+    type="revolute">
+    <origin
+      xyz="-0.0145 0.077989 0.0131"
+      rpy="1.5708 0 0.14872" />
+    <parent
+      link="right_wrist" />
+    <child
+      link="right_hand" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_shoulder_twist">
+    <inertial>
+      <origin
+        xyz="-0.011175227566884 1.16573417585641E-15 -0.0114631689738419"
+        rpy="0 0 0" />
+      <mass
+        value="0.0104989821167456" />
+      <inertia
+        ixx="6.19340879843904E-06"
+        ixy="-1.19437125634415E-21"
+        ixz="-1.06020563594101E-07"
+        iyy="6.88183260609745E-06"
+        iyz="-4.55611081394208E-21"
+        izz="2.10368331977384E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_shoulder_twist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_shoulder_twist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_shoulder_twist"
+    type="revolute">
+    <origin
+      xyz="0.092101 0.073 0.01547"
+      rpy="0.041575 0 -3.1416" />
+    <parent
+      link="chest_tilt" />
+    <child
+      link="left_shoulder_twist" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_shoulder_raise">
+    <inertial>
+      <origin
+        xyz="-0.0147796010193914 -0.00996563744891497 -1.02163088822049E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.123383158580608" />
+      <inertia
+        ixx="3.15626263711155E-05"
+        ixy="-1.08491424959693E-06"
+        ixz="1.58822387349958E-12"
+        iyy="4.1946040370827E-05"
+        iyz="-6.35552328848468E-11"
+        izz="5.17253057336903E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_shoulder_raise.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.149019607843137 0.149019607843137 0.149019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_shoulder_raise.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_shoulder_raise"
+    type="revolute">
+    <origin
+      xyz="-0.024999 0 0"
+      rpy="1.5708 0 -1.3393" />
+    <parent
+      link="left_shoulder_twist" />
+    <child
+      link="left_shoulder_raise" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_arm_twist">
+    <inertial>
+      <origin
+        xyz="-5.58242878978543E-07 -0.0361318552040859 0.0170918872499874"
+        rpy="0 0 0" />
+      <mass
+        value="0.0220000932885167" />
+      <inertia
+        ixx="2.82726837844617E-05"
+        ixy="2.62078590428416E-11"
+        ixz="2.78154048323733E-10"
+        iyy="1.4438299774589E-05"
+        iyz="1.51395917748845E-06"
+        izz="2.88039513344858E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_arm_twist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_arm_twist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_arm_twist"
+    type="revolute">
+    <origin
+      xyz="-0.05302 -0.0106 0"
+      rpy="3.1416 1.5318 1.5708" />
+    <parent
+      link="left_shoulder_raise" />
+    <child
+      link="left_arm_twist" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_elbow">
+    <inertial>
+      <origin
+        xyz="-5.52574962129904E-05 -0.0559382083557995 -0.00050021037652186"
+        rpy="0 0 0" />
+      <mass
+        value="0.0216224040511012" />
+      <inertia
+        ixx="2.33410161205092E-05"
+        ixy="1.97226145696623E-08"
+        ixz="3.67310452239962E-08"
+        iyy="1.01808609199407E-05"
+        iyz="2.47190856300054E-08"
+        izz="2.52458576697518E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_elbow.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_elbow.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_elbow"
+    type="revolute">
+    <origin
+      xyz="0 -0.10376 0.012929"
+      rpy="3.1092 0 -3.1416" />
+    <parent
+      link="left_arm_twist" />
+    <child
+      link="left_elbow" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_wrist">
+    <inertial>
+      <origin
+        xyz="3.4634914248266E-05 0.0114396494506202 -0.00107215723825903"
+        rpy="0 0 0" />
+      <mass
+        value="0.0114216787248396" />
+      <inertia
+        ixx="1.6278080823113E-06"
+        ixy="-2.75502112511764E-09"
+        ixz="-6.47315829578457E-09"
+        iyy="2.37673078125403E-06"
+        iyz="4.9923504523686E-08"
+        izz="1.91292440336447E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_wrist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wrist"
+    type="revolute">
+    <origin
+      xyz="0.0004 -0.1306 -0.0108"
+      rpy="-3.1416 0.0042122 0" />
+    <parent
+      link="left_elbow" />
+    <child
+      link="left_wrist" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_hand">
+    <inertial>
+      <origin
+        xyz="0.0265633804362479 0.0205000021239157 -0.00429163102967793"
+        rpy="0 0 0" />
+      <mass
+        value="0.00899816191040192" />
+      <inertia
+        ixx="4.31888422710902E-06"
+        ixy="-2.34990971653297E-13"
+        ixz="3.62082211103281E-07"
+        iyy="3.29146604200111E-06"
+        iyz="-3.9309632082429E-14"
+        izz="5.40454120862884E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_hand.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://FullAssemFIN_URDF/meshes/left_hand.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_hand"
+    type="revolute">
+    <origin
+      xyz="-0.0145 0.077989 -0.0198"
+      rpy="1.5708 0 0.14872" />
+    <parent
+      link="left_wrist" />
+    <child
+      link="left_hand" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

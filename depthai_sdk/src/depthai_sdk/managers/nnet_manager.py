@@ -15,7 +15,7 @@ class NNetManager:
     decoding neural network output automatically or by using external handler file.
     """
 
-    def __init__(self, inputSize, nnFamily=None, labels=[], confidence=0.5, sync=False):
+    def __init__(self, inputSize, nnFamily=None, labels=[], confidence=0.5, sync=False, device=None):
         """
         Args:
             inputSize (tuple): Desired NN input size, should match the input size defined in the network itself (width, height)
@@ -31,6 +31,7 @@ class NNetManager:
         self._labels = labels
         self._confidence = confidence
         self._sync = sync
+        self.device = device
 
     #: list: List of available neural network inputs
     sourceChoices = ("color", "left", "right", "rectifiedLeft", "rectifiedRight", "host")
@@ -112,7 +113,7 @@ class NNetManager:
         else:
             return 0
 
-    def createNN(self, pipeline, nodes, blobPath, source="color", useDepth=False, minDepth=100, maxDepth=10000, sbbScaleFactor=0.3, fullFov=True, useImageManip=True):
+    def createNN(self, pipeline, nodes, blobPath, source="color", useDepth=False, minDepth=100, maxDepth=10000, sbbScaleFactor=0.3, fullFov=True, useImageManip=True, device=None):
         """
         Creates nodes and connections in provided pipeline that will allow to run NN model and consume it's results.
 
@@ -145,7 +146,7 @@ class NNetManager:
             raise RuntimeError(f"Source {source} is invalid, available {self.sourceChoices}")
         if self.inputSize is None:
             raise RuntimeError("Unable to determine the nn input size. Please use --cnnInputSize flag to specify it in WxH format: -nnSize <width>x<height>")
-
+        self.device = device
         self.source = source
         self._fullFov = fullFov
         if self._nnFamily == "mobilenet":
@@ -320,82 +321,93 @@ class NNetManager:
                             self._textType, 0.5, (0, 0, 0), 1, self._lineType)
 
                 if hasattr(detection, 'spatialCoordinates'):
-                    # Convert to meters
-                    xMeters = detection.spatialCoordinates.x / 1000
-                    yMeters = detection.spatialCoordinates.y / 1000
-                    zMeters = detection.spatialCoordinates.z / 1000
-                    
-                    # Debug prints for spatial coordinates
-                    print(f"\nSpatial Coordinates (meters):")
-                    print(f"X: {xMeters:.3f}m")
-                    print(f"Y: {yMeters:.3f}m")
-                    print(f"Z: {zMeters:.3f}m")
-                    
-                    # Sanity checks for coordinates
-                    if abs(xMeters) > 5:
-                        print(f"WARNING: X coordinate {xMeters}m seems unusually large")
-                    if abs(yMeters) > 5:
-                        print(f"WARNING: Y coordinate {yMeters}m seems unusually large")
-                    if not (0.2 <= zMeters <= 20):
-                        print(f"WARNING: Z coordinate {zMeters}m is outside expected range (0.2m-20m)")
+                    try:
+                        # adding this to make sure the camera is calibrated
+                        if not self.device:
+                            print("WARNING: Device not initialized in NNetManager. Spatial calculations will be unavailable.")
+                        else:
+                            calibData = self.device.readCalibration()
+                            # Verify camera is calibrated
+                            if not calibData.getCameraIntrinsics(dai.CameraBoardSocket.RGB):
+                                print("WARNING: RGB camera not calibrated. Spatial calculations may be inaccurate.") 
+                        # Convert to meters
+                        xMeters = detection.spatialCoordinates.x / 1000
+                        yMeters = detection.spatialCoordinates.y / 1000
+                        zMeters = detection.spatialCoordinates.z / 1000
+                        
+                        # Debug prints for spatial coordinates
+                        print(f"\nSpatial Coordinates (meters):")
+                        print(f"X: {xMeters:.3f}m")
+                        print(f"Y: {yMeters:.3f}m")
+                        print(f"Z: {zMeters:.3f}m")
+                        
+                        # Sanity checks for coordinates
+                        if abs(xMeters) > 5:
+                            print(f"WARNING: X coordinate {xMeters}m seems unusually large")
+                        if abs(yMeters) > 5:
+                            print(f"WARNING: Y coordinate {yMeters}m seems unusually large")
+                        if not (0.2 <= zMeters <= 20):
+                            print(f"WARNING: Z coordinate {zMeters}m is outside expected range (0.2m-20m)")
 
-                    # Get camera intrinsics
-                    calibData = self.device.readCalibration()
-                    intrinsics = calibData.getCameraIntrinsics(dai.CameraBoardSocket.RGB)
-                    fx = intrinsics[0][0]
-                    fy = intrinsics[1][1]
-                    
-                    print(f"\nCamera Intrinsics:")
-                    print(f"fx: {fx}, fy: {fy}")
+                        # Get camera intrinsics
+                        calibData = self.device.readCalibration()
+                        intrinsics = calibData.getCameraIntrinsics(dai.CameraBoardSocket.RGB)
+                        fx = intrinsics[0][0]
+                        fy = intrinsics[1][1]
+                        
+                        print(f"\nCamera Intrinsics:")
+                        print(f"fx: {fx}, fy: {fy}")
 
-                    # Calculate physical dimensions
-                    bbox_norm = [detection.xmin, detection.ymin, detection.xmax, detection.ymax]
-                    frame_width, frame_height = 1920, 1080  # HD resolution
+                        # Calculate physical dimensions
+                        bbox_norm = [detection.xmin, detection.ymin, detection.xmax, detection.ymax]
+                        frame_width, frame_height = 1920, 1080  # HD resolution
 
-                    # Debug bbox info
-                    print(f"\nBounding Box (normalized): {bbox_norm}")
-                    
-                    # Calculate width
-                    bbox_width_pixels = (bbox_norm[2] - bbox_norm[0]) * frame_width
-                    physical_width = (bbox_width_pixels * zMeters) / fx
-                    print(f"Width calculation:")
-                    print(f"Bbox width in pixels: {bbox_width_pixels:.1f}")
-                    print(f"Physical width: {physical_width:.3f}m")
+                        # Debug bbox info
+                        print(f"\nBounding Box (normalized): {bbox_norm}")
+                        
+                        # Calculate width
+                        bbox_width_pixels = (bbox_norm[2] - bbox_norm[0]) * frame_width
+                        physical_width = (bbox_width_pixels * zMeters) / fx
+                        print(f"Width calculation:")
+                        print(f"Bbox width in pixels: {bbox_width_pixels:.1f}")
+                        print(f"Physical width: {physical_width:.3f}m")
 
-                    # Calculate height
-                    bbox_height_pixels = (bbox_norm[3] - bbox_norm[1]) * frame_height
-                    physical_height = (bbox_height_pixels * zMeters) / fy
-                    print(f"Height calculation:")
-                    print(f"Bbox height in pixels: {bbox_height_pixels:.1f}")
-                    print(f"Physical height: {physical_height:.3f}m")
+                        # Calculate height
+                        bbox_height_pixels = (bbox_norm[3] - bbox_norm[1]) * frame_height
+                        physical_height = (bbox_height_pixels * zMeters) / fy
+                        print(f"Height calculation:")
+                        print(f"Bbox height in pixels: {bbox_height_pixels:.1f}")
+                        print(f"Physical height: {physical_height:.3f}m")
 
-                    # Calculate surface area
-                    surface_area = physical_width * physical_height
-                    print(f"Surface area: {surface_area:.3f}m²")
+                        # Calculate surface area
+                        surface_area = physical_width * physical_height
+                        print(f"Surface area: {surface_area:.3f}m²")
 
-                    # Sanity checks for calculated dimensions
-                    if not (0.01 <= physical_width <= 5):
-                        print(f"WARNING: Calculated width {physical_width}m seems unusual")
-                    if not (0.01 <= physical_height <= 5):
-                        print(f"WARNING: Calculated height {physical_height}m seems unusual")
-                    if not (0.0001 <= surface_area <= 25):
-                        print(f"WARNING: Surface area {surface_area}m² seems unusual")
+                        # Sanity checks for calculated dimensions
+                        if not (0.01 <= physical_width <= 5):
+                            print(f"WARNING: Calculated width {physical_width}m seems unusual")
+                        if not (0.01 <= physical_height <= 5):
+                            print(f"WARNING: Calculated height {physical_height}m seems unusual")
+                        if not (0.0001 <= surface_area <= 25):
+                            print(f"WARNING: Surface area {surface_area}m² seems unusual")
 
-                    # Draw the information on frame
-                    texts = [
-                        f"X: {xMeters:.3f}m",
-                        f"Y: {yMeters:.3f}m",
-                        f"Z: {zMeters:.3f}m",
-                        f"Width: {physical_width:.3f}m",
-                        f"Height: {physical_height:.3f}m",
-                        f"Area: {surface_area:.3f}m²"
-                    ]
+                        # Draw the information on frame
+                        texts = [
+                            f"X: {xMeters:.3f}m",
+                            f"Y: {yMeters:.3f}m",
+                            f"Z: {zMeters:.3f}m",
+                            f"Width: {physical_width:.3f}m",
+                            f"Height: {physical_height:.3f}m",
+                            f"Area: {surface_area:.3f}m²"
+                        ]
 
-                    for i, text in enumerate(texts):
-                        cv2.putText(frame, text, (bbox[0] + 10, bbox[1] + 60 + i*15),
-                                self._textType, 0.5, self._textBgColor, 4, self._lineType)
-                        cv2.putText(frame, text, (bbox[0] + 10, bbox[1] + 60 + i*15),
-                                self._textType, 0.5, self._textColor, 1, self._lineType)
+                        for i, text in enumerate(texts):
+                            cv2.putText(frame, text, (bbox[0] + 10, bbox[1] + 60 + i*15),
+                                    self._textType, 0.5, self._textBgColor, 4, self._lineType)
+                            cv2.putText(frame, text, (bbox[0] + 10, bbox[1] + 60 + i*15),
+                                    self._textType, 0.5, self._textColor, 1, self._lineType)
+                    except Exception as e:
+                        print(f"ERROR: Failed to read camera calibration: {e}")
             if isinstance(source, SyncedPreviewManager):
                 if len(self.buffer) > 0 and source.nnSyncSeq is not None:
                     data = self.buffer.get(source.nnSyncSeq, self.buffer[max(self.buffer.keys())])

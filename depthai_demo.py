@@ -414,6 +414,7 @@ class Demo:
             self._pv.showFrames(callback=self._showFramesCallback)
         elif self._hostFrame is not None:
             debugHostFrame = self._hostFrame.copy()
+            # might be the draw method we are looking for 
             if self._nnManager is not None:
                 self._nnManager.draw(debugHostFrame, self._nnData)
             self._fps.drawFps(debugHostFrame, "host")

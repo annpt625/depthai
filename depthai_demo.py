@@ -54,6 +54,7 @@ from depthai_helpers.config_manager import ConfigManager, DEPTHAI_ZOO, DEPTHAI_V
 from depthai_helpers.version_check import checkRequirementsVersion
 from depthai_sdk import loadModule, getDeviceInfo, downloadYTVideo, createBlankFrame
 from depthai_sdk.managers import NNetManager, SyncedPreviewManager, PreviewManager, PipelineManager, EncodingManager, BlobManager
+print("NNetManager location:", NNetManager.__file__) # find out which nnetmanager is being used to draw 
 
 
 class OverheatError(RuntimeError):
@@ -197,6 +198,8 @@ class Demo:
                 zooName=self._conf.getModelName(),
                 progressFunc=self.showDownloadProgress
             )
+            
+            # here is where the nn manager instance is created. 
             self._nnManager = NNetManager(inputSize=self._conf.inputSize, sync=self._conf.args.sync)
 
             if self._conf.getModelDir() is not None:
